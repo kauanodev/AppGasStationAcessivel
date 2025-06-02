@@ -38,12 +38,19 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 
 @Composable
-fun AlcoolGasolinaPreco(navController: NavHostController,check:Boolean) {
+fun AlcoolGasolinaPreco(
+    navController: NavHostController,
+    check: Boolean,
+    latitude: String,
+    longitude: String
+) {
     val context = LocalContext.current
     var alcool by remember { mutableStateOf("") }
     var gasolina by remember { mutableStateOf("") }
     var nomeDoPosto by remember { mutableStateOf("") }
     var checkedState by remember { mutableStateOf(check) }
+    var lat by remember {mutableStateOf(latitude)}
+    var long by remember {mutableStateOf(longitude)}
 
     // A surface container using the 'background' color from the theme
     Surface(
@@ -148,3 +155,49 @@ fun saveConfig(context: Context, switch_state:Boolean){
     editor.apply()
 }
 
+
+//// 1. Solicitar permissões
+//private val REQUEST_LOCATION_PERMISSION_CODE = 123
+//
+//// 2. Obter instância do Fused Location Provider Client
+//private lateinit var fusedLocationClient: FusedLocationProviderClient
+//
+//// 3. Solicitar última localização conhecida
+//fun getLastLocation() {
+//    if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+//        fusedLocationClient.lastLocation.addOnSuccessListener { location: Location? ->
+//            if (location != null) {
+//                val latitude = location.latitude
+//                val longitude = location.longitude
+//                // Faça algo com a latitude e longitude (ex: mostrar no mapa, enviar para o servidor)
+//            }
+//        }
+//    } else {
+//        // Solicitar permissões
+//        ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), REQUEST_LOCATION_PERMISSION_CODE)
+//    }
+//}
+//
+//// 4. Solicitar atualizações de localização
+//private lateinit var locationCallback: LocationCallback
+//private val locationRequest = LocationRequest.Builder(Priority.PRIORITY_HIGH_ACCURACY, 10000).build()
+//
+//fun startLocationUpdates() {
+//    if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+//        locationCallback = object : LocationCallback() {
+//            override fun onLocationResult(result: LocationResult) {
+//                val lastLocation = result.lastLocation
+//                val latitude = lastLocation?.latitude
+//                val longitude = lastLocation?.longitude
+//                // Faça algo com a latitude e longitude (ex: mostrar no mapa, enviar para o servidor)
+//            }
+//        }
+//        fusedLocationClient.requestLocationUpdates(locationRequest, locationCallback, Looper.getMainLooper())
+//    }
+//}
+//
+//// 5. Desativar atualizações
+//fun stopLocationUpdates() {
+//    fusedLocationClient.removeLocationUpdates(locationCallback)
+//}
+//

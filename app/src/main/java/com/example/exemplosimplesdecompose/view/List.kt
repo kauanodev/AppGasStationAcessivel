@@ -33,11 +33,16 @@ import java.nio.charset.StandardCharsets
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ListofGasStations(navController: NavHostController, posto:String) {
+fun ListofGasStations(
+    navController: NavHostController,
+    posto: String,
+    latitude: String,
+    longitude: String
+) {
     val context= LocalContext.current
    // val gasES = GasStation("Posto na Espanha", Coordenadas(41.40338, 2.17403))
     val gasNY = GasStation("Posto em NY", Coordinates(40.7128, -74.0060))
-    val gasN= GasStation(posto,Coordinates(41.40338, 2.17403))
+    val gasN= GasStation(posto,Coordinates(latitude.toDouble(), longitude.toDouble())
 
    // val gasES = getGasStation(context)
    // saveGasStation(context,gasN)
@@ -45,10 +50,10 @@ fun ListofGasStations(navController: NavHostController, posto:String) {
    // val gasES = getGasStationSerializable(context)
     //saveGasStationSerializable(context,gasN)
 
-    val gasES = getGasStationJSON(context)
-    saveGasStationJSON(context,gasN)
-
-    val postosComp = listOf(gasN, gasES, gasNY)
+//    val gasES = getGasStationJSON(context)
+//    saveGasStationJSON(context,gasN)
+//TODO SALVAR COODERNADAS
+    val postosComp = listOf(gasN, gasNY)
     Scaffold(
         topBar = {
             TopAppBar(
