@@ -31,11 +31,13 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
+import com.example.exemplosimplesdecompose.R
 
 @Composable
 fun AlcoolGasolinaPreco(navController: NavHostController,check:Boolean) {
@@ -61,16 +63,16 @@ fun AlcoolGasolinaPreco(navController: NavHostController,check:Boolean) {
             // Campo de texto para entrada do preço
             OutlinedTextField(
                 value = alcool,
-                onValueChange = { alcool = it }, // Atualiza o estado
-                label = { Text("Preço do Álcool (R$)") },
-                modifier = Modifier.fillMaxWidth(), // Preenche a largura disponível
-                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number) // Configuração do teclado
+                onValueChange = { alcool = it },
+                label = { Text(stringResource(R.string.alcohol_price)) }, // Modificado
+                modifier = Modifier.fillMaxWidth(),
+                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
             )
             // Campo de texto para preço da Gasolina
             OutlinedTextField(
                 value = gasolina,
                 onValueChange = { gasolina = it },
-                label = { Text("Preço da Gasolina (R$)") },
+                label = { Text(stringResource(R.string.gasoline_price)) }, // Modificado
                 modifier = Modifier.fillMaxWidth(),
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
             )
@@ -78,7 +80,7 @@ fun AlcoolGasolinaPreco(navController: NavHostController,check:Boolean) {
             OutlinedTextField(
                 value = nomeDoPosto,
                 onValueChange = { nomeDoPosto = it },
-                label = { Text("Nome do Posto (Opcional))") },
+                label = { Text(stringResource(R.string.station_name)) }, // Modificado
                 modifier = Modifier.fillMaxWidth(),
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text)
             )
@@ -88,16 +90,19 @@ fun AlcoolGasolinaPreco(navController: NavHostController,check:Boolean) {
                 .padding(16.dp),
                 horizontalArrangement = Arrangement.Start) {
                 Text(
-                    text = "75%",
+                    text = stringResource(R.string.percentage_75), // Modificado
                     style = MaterialTheme.typography.bodyLarge,
                     modifier = Modifier.padding(top = 16.dp)
                 )
+
                 Switch(
-                    modifier = Modifier.semantics { contentDescription = "Escolha o percentual" },
+                    modifier = Modifier.semantics {
+                        contentDescription = "Escolha o percentual" // Modificado
+                    },
                     checked = checkedState,
                     onCheckedChange = { checkedState = it
-                         saveConfig(context,checkedState)
-                                      },
+                        saveConfig(context,checkedState)
+                    },
                     thumbContent = {
                         if (checkedState) {
                             // Icon isn't focusable, no need for content description
@@ -117,12 +122,12 @@ fun AlcoolGasolinaPreco(navController: NavHostController,check:Boolean) {
                 },
                 modifier = Modifier.fillMaxWidth()
             ) {
-                Text("Calcular")
+                Text(stringResource(R.string.calculate_button))
             }
 
             // Texto do resultado
             Text(
-                text = "Vamos Calcular?",
+                text = stringResource(R.string.result_text), // Modificado
                 style = MaterialTheme.typography.bodyMedium,
                 modifier = Modifier.padding(top = 16.dp)
             )
@@ -133,8 +138,8 @@ fun AlcoolGasolinaPreco(navController: NavHostController,check:Boolean) {
                 FloatingActionButton(
                     onClick = {
                         navController.navigate("ListaDePostos/$nomeDoPosto")},
-                    ) {
-                    Icon(Icons.Filled.Add, "Inserir Posto")
+                ) {
+                    Icon(Icons.Filled.Add, stringResource(R.string.add_station))
                 }
             }
         }

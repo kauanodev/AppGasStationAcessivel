@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Meu Aplicativo</string>
+    <string name="welcome_message">Bem-vindo ao aplicativo!</string>
+    <string name="welcome_image_desc">Descrição</string>
+    <string name="alcohol_price">Preço do Álcool (R$)</string>
+    <string name="gasoline_price">Preço da Gasolina (R$)</string>
+    <string name="station_name">Nome do Posto (Opcional)</string>
+    <string name="percentage_75">75%</string>
+    <string name="switch_description">Escolha o percentual</string>
+    <string name="calculate_button">Calcular</string>
+    <string name="result_text">Vamos Calcular?</string>
+    <string name="add_station">Adicionar Posto</string>
+    <string name="input_hint">Digite algo</string>
+    <string name="next_screen_button">Ir para a próxima tela</string>
+    <string name="list">Lista de Postos</string>
+    <!-- Adicione todas as strings do seu app aqui -->
+</resources>

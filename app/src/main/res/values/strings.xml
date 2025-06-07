@@ -1,3 +1,16 @@
 <resources>
-    <string name="app_name">Gas Sation App</string>
+    <string name="app_name">My App</string>
+    <string name="welcome_message">Welcome to the app!</string>
+    <string name="welcome_image_desc">Welcome image</string>
+    <string name="alcohol_price">Alcohol Price (R$)</string>
+    <string name="gasoline_price">Gasoline Price (R$)</string>
+    <string name="station_name">Station Name (Optional)</string>
+    <string name="percentage_75">75%</string>
+    <string name="switch_description">Choose percentage</string>
+    <string name="calculate_button">Calculate</string>
+    <string name="result_text">Let\'s Calculate?</string>
+    <string name="add_station">Add Station</string>
+    <string name="input_hint">Type something</string>
+    <string name="next_screen_button">Go to next screen</string>
+    <string name="list">List of Stations</string>
 </resources>

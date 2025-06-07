@@ -30,19 +30,21 @@ import java.io.ByteArrayOutputStream
 import java.io.ObjectInputStream
 import java.io.ObjectOutputStream
 import java.nio.charset.StandardCharsets
+import androidx.compose.ui.res.stringResource
+import com.example.exemplosimplesdecompose.R
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ListofGasStations(navController: NavHostController, posto:String) {
     val context= LocalContext.current
-   // val gasES = GasStation("Posto na Espanha", Coordenadas(41.40338, 2.17403))
+    // val gasES = GasStation("Posto na Espanha", Coordenadas(41.40338, 2.17403))
     val gasNY = GasStation("Posto em NY", Coordinates(40.7128, -74.0060))
     val gasN= GasStation(posto,Coordinates(41.40338, 2.17403))
 
-   // val gasES = getGasStation(context)
-   // saveGasStation(context,gasN)
+    // val gasES = getGasStation(context)
+    // saveGasStation(context,gasN)
 
-   // val gasES = getGasStationSerializable(context)
+    // val gasES = getGasStationSerializable(context)
     //saveGasStationSerializable(context,gasN)
 
     val gasES = getGasStationJSON(context)
@@ -52,7 +54,7 @@ fun ListofGasStations(navController: NavHostController, posto:String) {
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Lista de Postos") }
+                title = { Text(stringResource(R.string.list)) }
             )
         }
     ) { innerPadding ->
