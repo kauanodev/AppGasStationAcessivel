@@ -43,21 +43,18 @@ class MainActivity : ComponentActivity() {
 
         check=loadConfig(this)
         setContent {
-            ExemploSimplesDeComposeTheme {
-                val navController: NavHostController = rememberNavController()
-                NavHost(navController = navController, startDestination = "welcome") {
-                    composable("welcome") { Welcome(navController) }
-                   // composable("input") { InputView(navController) }
-                    composable("mainalcgas") { AlcoolGasolinaPreco(navController,check, latitude, longitude) }
-                    composable("listaDePostos/{posto}") { backStackEntry ->
-                        val posto = backStackEntry.arguments?.getString("posto") ?: ""
-                        ListofGasStations(navController, posto, latitude, longitude)
-                    }
+            val navController = rememberNavController()
+            AppNavigation(navController)
 
                 }
             }
         }
     }
+
+
+
+
+
 
 
     fun loadConfig(context: Context):Boolean{
