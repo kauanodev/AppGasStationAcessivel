@@ -39,8 +39,10 @@ fun InputView(navController: NavHostController) { //Recebe o elemento que permit
         )
         Spacer(modifier = Modifier.height(16.dp))
         val nomeDoPosto=text.text
+        val latitude = "41.40338"  // Substituir depois
+        val longitude = "2.17403"  // Substituir depois
         Button(
-            onClick = { navController.navigate("listaDePostos/$nomeDoPosto")}
+            onClick = { navController.navigate("listaDePostos/$nomeDoPosto/$latitude/$longitude")}
         ) {
             Text("Ir para a próxima tela")
         }
