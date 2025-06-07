@@ -42,7 +42,8 @@ fun ListofGasStations(
     val context= LocalContext.current
    // val gasES = GasStation("Posto na Espanha", Coordenadas(41.40338, 2.17403))
     val gasNY = GasStation("Posto em NY", Coordinates(40.7128, -74.0060))
-    val gasN= GasStation(posto,Coordinates(latitude.toDouble(), longitude.toDouble())
+    val gasN = GasStation(posto, Coordinates(latitude.toDouble(), longitude.toDouble()))
+    saveGasStation(context, gasN)
 
    // val gasES = getGasStation(context)
    // saveGasStation(context,gasN)
@@ -104,17 +105,17 @@ fun saveGasStation(context: Context, gasStation: GasStation){
     var editor = sp.edit()
     editor.putString("nomeDoPosto",gasStation.name)
     editor.putString("latitude",gasStation.coord.lat.toString())
-    editor.putString("latitude",gasStation.coord.lgt.toString())
+    editor.putString("logintude",gasStation.coord.lgt.toString())
     editor.apply()
 }
-fun getGasStation(context: Context):GasStation{
-    val sharedFileName="lastGasStation"
-    var sp: SharedPreferences = context.getSharedPreferences(sharedFileName, Context.MODE_PRIVATE)
-    var gasStation = GasStation("Posto na Espanha", Coordinates(41.40338, 2.17403))
-    if(sp!=null) {
-        gasStation.name = sp.getString("nomeDoPosto", "").toString()
-    }
-    return gasStation
+fun getGasStation(context: Context): GasStation {
+    val sharedFileName = "lastGasStation"
+    val sp = context.getSharedPreferences(sharedFileName, Context.MODE_PRIVATE)
+    val name = sp.getString("nomeDoPosto", "") ?: ""
+    val lat = sp.getString("latitude", "0.0")?.toDoubleOrNull() ?: 0.0
+    val lgt = sp.getString("longitude", "0.0")?.toDoubleOrNull() ?: 0.0
+
+    return GasStation(name, Coordinates(lat, lgt))
 }
 fun saveGasStationSerializable(context: Context, gasStation: GasStation){
     Log.v("PDM25","Salvando o posto serializado")
